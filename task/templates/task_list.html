@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Tasks</h2>
+
+<!-- FILTER NAV -->
+<form method="get" style="margin-bottom:20px; display:flex; gap:10px;">
+    <select name="status">
+        <option value="all">All Status</option>
+        <option value="pending" {% if status_filter == 'pending' %}selected{% endif %}>Pending</option>
+        <option value="completed" {% if status_filter == 'completed' %}selected{% endif %}>Completed</option>
+    </select>
+
+    <select name="category">
+        <option value="all">All Categories</option>
+        <option value="work" {% if category_filter == 'work' %}selected{% endif %}>Work</option>
+        <option value="personal" {% if category_filter == 'personal' %}selected{% endif %}>Personal</option>
+        <option value="other" {% if category_filter == 'other' %}selected{% endif %}>Other</option>
+    </select>
+
+    <button class="btn" type="submit">Filter</button>
+</form>
+
+<a href="{% url 'task_create' %}" class="btn">➕ Create Task</a>
+
+<hr>
+
+<h3>⏳ Pending Tasks</h3>
+{% for task in pending_tasks %}
+<div class="card">
+    <strong>{{ task.title }}</strong>
+    <p>Category: {{ task.category }}</p>
+    <a class="btn" href="{% url 'task_details' task.id %}">View</a>
+    <a class="btn btn-success" href="{% url 'task_mark_completed' task.id %}">Complete</a>
+</div>
+{% empty %}
+<p>No pending tasks</p>
+{% endfor %}
+
+<h3>✅ Completed Tasks</h3>
+{% for task in completed_tasks %}
+<div class="card">
+    <strong>{{ task.title }}</strong>
+    <p>Category: {{ task.category }}</p>
+</div>
+{% empty %}
+<p>No completed tasks</p>
+{% endfor %}
+
+{% endblock %}
