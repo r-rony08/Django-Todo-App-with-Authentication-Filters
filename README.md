@@ -25,13 +25,13 @@ A clean and user-friendly Todo application built with **Django** that supports a
 ## 📸 Screenshots
 
 ### 🔐 Login Page
-![Login Page](static/screenshots/login.png)
+![Login Page](./static/screenshots/login.png)
 
 ### 📋 Task List with Filters
-![Task List](static/screenshots/task_list.png)
+![Task List](./static/screenshots/task_list.png)
 
 ### 📝 Task Detail View
-![Task Detail](static/screenshots/task_detail.png)
+![Task Detail](./static/screenshots/task_detail.png)
 ---
 
 ## ⚙️ Installation & Setup
